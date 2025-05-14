@@ -1,0 +1,264 @@
+/* Base Styles */
+.admin-page {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.admin-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.grid {
+  background-color: var(--light);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid h2 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--dark);
+}
+
+.main-content {
+  grid-column: span 3;
+}
+
+/* Chart Styles */
+.marks-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.semester-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bar-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  position: relative;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background-color: var(--secondary);
+}
+
+.bar-value {
+  position: absolute;
+  right: 10px;
+  color: var(--light);
+  font-weight: bold;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* List Styles */
+.calendar,
+.classes-list,
+.students-scrollable {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.event,
+.class-item,
+.student-card {
+  padding: 12px;
+  border-radius: 6px;
+  background-color: var(--background);
+}
+
+.event {
+  align-items: center;
+}
+
+.class-item.active,
+.student-card.selected {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.student-card {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.student-card.selected {
+  border-left: 3px solid var(--secondary);
+}
+
+/* Event Type Indicators */
+.event.exam { border-left: 4px solid var(--accent); }
+.event.event { border-left: 4px solid var(--success); }
+.event.meeting { border-left: 4px solid var(--info); }
+
+/* Text Styles */
+.bar-label { width: 100px; }
+.event-date { 
+  font-weight: bold;
+  min-width: 60px;
+  margin-right: 15px;
+  color: var(--primary);
+}
+.class-name { font-weight: bold; }
+.student-name { font-weight: bold; }
+
+/* Secondary Text */
+.student-count,
+.student-id {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Module Management */
+/* Student Modules Management Styles */
+.student-modules-container {
+  display: flex;
+  gap: 20px;
+}
+
+.student-list {
+  flex: 1;
+  max-width: 300px;
+}
+
+.search-box {
+  margin-bottom: 15px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+}
+
+.students-scrollable {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.student-card {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  background-color: var(--background);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.student-card:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.student-card.selected {
+  background-color: rgba(52, 152, 219, 0.2);
+  border-left: 3px solid var(--secondary);
+}
+
+.student-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.module-management {
+  flex: 2;
+}
+
+.assign {
+  margin-bottom: 20px;
+}
+
+.assign input {
+  padding: 8px;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.assign button {
+  padding: 8px 15px;
+}
+
+.modules-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.module-tag {
+  background-color: var(--info);
+  color: var(--light);
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.remove-module {
+  background: none;
+  border: none;
+  color: var(--light);
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.no-modules {
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* Form Elements */
+.search-box input,
+.add-module input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--dark);
+  border-radius: 4px;
+}
+
+.add-module {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  background-color: var(--secondary);
+  color: var(--light);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-module {
+  background: none;
+  color: var(--light);
+  padding: 0;
+  font-size: 1rem;
+}
+
+/* Utility Classes */
+.no-modules {
+  color: var(--text-secondary);
+  font-style: italic;
+}

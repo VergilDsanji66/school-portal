@@ -1,0 +1,29 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Primary Colors (School Theme) */
+  --primary: #2c3e50;       /* Dark blue (for headers, important text) */
+  --secondary: #3498db;     /* Bright blue (buttons, links) */
+  --accent: #e74c3c;        /* Red (notifications, alerts) */
+  --light: #ffffff;         /* White (background, cards) */
+  --dark: #667c91;          /* Dark blue (text, borders) */
+  
+  /* Backgrounds */
+  --background: #f5f7fa;    /* Light gray (page background) */
+  --dark-background: #1a2634; /* Dark blue (sidebars, footer) */
+  
+  /* School-Specific Accents */
+  --success: #27ae60;       /* Green (success messages) */
+  --warning: #f39c12;       /* Orange (warnings) */
+  --info: #2980b9;          /* Lighter blue (info messages) */
+  
+}
+
+body{
+  height: 100vh;
+  margin: 0.5rem 2rem;
+}

@@ -1,0 +1,127 @@
+.lecture-dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.lecturer-header {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.lecturer-header h1 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.lecturer-header p {
+  color: var(--text-secondary);
+}
+
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.module-card {
+  background-color: var(--light);
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.module-card:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.module-card.active {
+  background-color: rgba(52, 152, 219, 0.2);
+  border-left: 4px solid var(--secondary);
+}
+
+.student-count {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.module-details {
+  background-color: var(--light);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section {
+  margin-bottom: 30px;
+}
+
+.upload-area {
+  border: 2px dashed var(--dark);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.file-upload-placeholder {
+  margin-top: 15px;
+  padding: 30px;
+  background-color: var(--background);
+  border-radius: 4px;
+}
+
+.students-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.student-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--background);
+  border-radius: 8px;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-weight: bold;
+  display: block;
+}
+
+.student-id {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.student-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.student-actions select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid var(--dark);
+}
+
+.student-actions button {
+  padding: 5px 10px;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
