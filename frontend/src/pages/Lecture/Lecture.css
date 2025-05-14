@@ -93,7 +93,10 @@
 }
 
 .student-info {
-  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
 .student-name {
@@ -102,7 +105,8 @@
 }
 
 .student-id {
-  font-size: 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
@@ -111,10 +115,11 @@
   gap: 10px;
 }
 
-.student-actions select {
-  padding: 5px;
+.student-actions input {
+  width: 6rem;
+  padding: 0.5em;
   border-radius: 4px;
-  border: 1px solid var(--dark);
+  border: 2px solid var(--dark);
 }
 
 .student-actions button {
@@ -124,4 +129,9 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.upload-area input{
+  padding: 0.5em;
+  margin-right: 1em;
 }

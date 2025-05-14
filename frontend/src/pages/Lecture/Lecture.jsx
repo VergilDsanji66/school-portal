@@ -12,6 +12,7 @@ const Lecture = () => {
   const [newAssignment, setNewAssignment] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [studentMarks, setStudentMarks] = useState({});
 
   const location = useLocation();
   const { email } = location.state || {};
@@ -57,16 +58,19 @@ const Lecture = () => {
   }, [email]);
 
   // Fetch students who share modules with lecturer
-  const fetchStudents = (modules) => {
-    const studentsRef = ref(database, 'students');
+  const fetchStudents = (lecturerModules) => {
+    const studentsRef = ref(database, 'Students');
     
     onValue(studentsRef, (snapshot) => {
       if (snapshot.exists()) {
         const allStudents = snapshot.val();
         const filteredStudents = Object.entries(allStudents)
-          .filter(([_, student]) => 
-            student.modules?.some(module => modules.includes(module))
-          .map(([id, student]) => ({ id, ...student })));
+          .filter(([_, student]) => {
+            if (!student.modules) return false;
+            // Check if student has at least one module that matches lecturer's modules
+            return student.modules.some(module => lecturerModules.includes(module));
+          })
+          .map(([id, student]) => ({ id, ...student }));
         
         setStudents(filteredStudents);
       }
@@ -84,6 +88,18 @@ const Lecture = () => {
     if (!newAssignment.trim() || !activeModule) return;
     alert(`Assignment "${newAssignment}" added to ${activeModule}`);
     setNewAssignment('');
+  };
+
+  const handleMarkChange = (studentId, mark) => {
+    setStudentMarks(prev => ({
+      ...prev,
+      [studentId]: mark
+    }));
+  };
+
+  const handleSaveMark = (studentId) => {
+    // Here you would typically save to database
+    alert(`Mark ${studentMarks[studentId]} saved for student ${studentId}`);
   };
 
   if (loading) return <div className="loading">Loading...</div>;
@@ -109,7 +125,7 @@ const Lecture = () => {
               >
                 <h3>{module}</h3>
                 <span className="student-count">
-                  {studentsByModule?.[module]?.length || 0} students
+                  {studentsByModule?.[module]?.length || 0} Students
                 </span>
               </div>
             ))}
@@ -143,15 +159,15 @@ const Lecture = () => {
                         <span className="student-id">{student.studentNo}</span>
                       </div>
                       <div className="student-actions">
-                        <select defaultValue="">
-                          <option value="" disabled>Select grade</option>
-                          <option value="A">A</option>
-                          <option value="B">B</option>
-                          <option value="C">C</option>
-                          <option value="D">D</option>
-                          <option value="F">F</option>
-                        </select>
-                        <button>Save Grade</button>
+                        <input
+                          type="number"
+                          min="0"
+                          max="100"
+                          placeholder="Enter marks"
+                          value={studentMarks[student.id] || ''}
+                          onChange={(e) => handleMarkChange(student.id, e.target.value)}
+                        />
+                        <button onClick={() => handleSaveMark(student.id)}>Save Mark</button>
                       </div>
                     </div>
                   ))}

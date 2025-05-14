@@ -7,7 +7,7 @@ const AddHero = () => {
     const [activeTab, setActiveTab] = useState('courses');
     const [courses, setCourses] = useState([]);
     const [lecturers, setLecturers] = useState([]);
-    const [students, setStudents] = useState([]);
+    const [Students, setStudents] = useState([]);
     const [searchStudent, setSearchStudent] = useState('');
     const [newCourse, setNewCourse] = useState({
         code: '',
@@ -34,7 +34,7 @@ const AddHero = () => {
     useEffect(() => {
         const coursesRef = ref(database, 'courses');
         const lecturersRef = ref(database, 'lecturers');
-        const studentsRef = ref(database, 'students');
+        const studentsRef = ref(database, 'Students');
 
         onValue(coursesRef, (snapshot) => {
         const data = snapshot.val();
@@ -120,10 +120,10 @@ const AddHero = () => {
         
         // Generate student number (year + 6 digits)
         const year = new Date().getFullYear().toString().slice(-2);
-        const studentCount = students.filter(s => s.studentNo.startsWith(year)).length + 1;
+        const studentCount = Students.filter(s => s.studentNo.startsWith(year)).length + 1;
         const studentNo = `${year}${String(studentCount).padStart(6, '0')}`;
         
-        const studentsRef = ref(database, 'students');
+        const studentsRef = ref(database, 'Students');
         push(studentsRef, {
         ...newStudent,
         studentNo,
@@ -139,12 +139,12 @@ const AddHero = () => {
     };
 
     const deleteStudent = (id) => {
-        const studentRef = ref(database, `students/${id}`);
+        const studentRef = ref(database, `Students/${id}`);
         remove(studentRef);
     };
 
     const updateStudent = (id, updatedData) => {
-        const studentRef = ref(database, `students/${id}`);
+        const studentRef = ref(database, `Students/${id}`);
         update(studentRef, updatedData);
   };
 
@@ -164,8 +164,8 @@ const AddHero = () => {
             Assign Lecture
             </h1>
             <h1 
-            className={activeTab === 'students' ? 'active' : ''} 
-            onClick={() => setActiveTab('students')}
+            className={activeTab === 'Students' ? 'active' : ''} 
+            onClick={() => setActiveTab('Students')}
             >
             Manage Student(s)
             </h1>
@@ -305,7 +305,7 @@ const AddHero = () => {
             </div>
         )}
 
-        {activeTab === 'students' && (
+        {activeTab === 'Students' && (
             <div className="student-section">
             <div className="search-bar">
                 <input
@@ -340,9 +340,9 @@ const AddHero = () => {
             </div>
             
             <h2>Student List</h2>
-            {students.length > 0 ? (
-                <div className="students-list">
-                {students
+            {Students.length > 0 ? (
+                <div className="Students-list">
+                {Students
                     .filter(student => 
                     searchStudent === '' || 
                     student.studentNo.includes(searchStudent)
@@ -384,7 +384,7 @@ const AddHero = () => {
                     ))}
                 </div>
             ) : (
-                <p className="no-data">No students found.</p>
+                <p className="no-data">No Students found.</p>
             )}
             </div>
         )}
